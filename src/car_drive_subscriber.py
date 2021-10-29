@@ -1,5 +1,3 @@
-  GNU nano 2.9.3                                                                                               src/rosbot1/src/auto_drive_subscriber.py
-
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
