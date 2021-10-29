@@ -39,8 +39,12 @@ def drive(speed, turn):
 def chatter_callback(message):
     speed = -1 * message.speed * 100
     angle = message.angle * 10
-    # rospy.loginfo(speed)
-    # print(speed)
+    if angle == 0.0:
+        angle = 9
+    elif angle > 0:
+        angle = 11
+    else:
+        angle = 7
 
     drive(speed, angle)
 

@@ -169,12 +169,12 @@ def robot_motion_commander():
                     print(axis_states['x'], axis_states['y'])
                     # print("%s: %.3f" % (axis, fvalue
                     data.speed = axis_states['y']
-                    #data.angle = axis_states['x']
+                    data.angle = axis_states['x']
                     # print(data.angle)
                     # print("%s: %.3f" % (axis, fvalue))
 
         # data.speed = 0.5
-        data.angle = 9.0
+        # data.angle = 9.0
         # rospy.loginfo((data.speed, data.angle))
 
         pub.publish(data)
