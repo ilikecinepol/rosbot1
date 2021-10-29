@@ -9,10 +9,11 @@ from fcntl import ioctl
 
 def robot_motion_commander():
     pub = rospy.Publisher('robot_speed_topic', car_motion_message, queue_size=10)
-    data = car_motion_message
+    data = car_motion_message()
     rospy.init_node('car_motion_publisher', anonymous=True)
     rospy.loginfo("Starting motion")
-    r = rospy.Rate(10)
+    r = rospy.Rate(100)  # 1hz
+
     # Iterate over the joystick devices.
     # # ('Available devices:')
 
@@ -167,13 +168,13 @@ def robot_motion_commander():
                     axis_states[axis] = fvalue
                     # print("%s: %.3f" % (axis, fvalue))
                     if axis == 'y':
-                        # data.speed = fvalue
-                        print(float(fvalue))
-                    '''elif axis == 'x':
-                        data.angle == fvalue'''
+                        data.speed = fvalue
 
-        data.speed = 0.5
-        data.angle = 7.0
+                    elif axis == 'x':
+                        data.angle == fvalue
+
+        #data.speed = 0.5
+        #data.angle = 7.0
         #rospy.loginfo((data.speed, data.angle))
 
         pub.publish(data)

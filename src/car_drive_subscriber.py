@@ -38,8 +38,11 @@ def drive(speed, turn):
 
 def chatter_callback(message):
     speed = message.angle
-    rospy.loginfo(speed)
-    print(speed)
+    angle = message.angle
+    #rospy.loginfo(speed)
+    #print(speed)
+    
+    drive(speed, 7)
 
 rospy.init_node('car_driving_subscriber', anonymous=True)
 
