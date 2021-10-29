@@ -166,16 +166,16 @@ def robot_motion_commander():
                 if axis:
                     fvalue = value / 32767.0
                     axis_states[axis] = fvalue
+                    print(axis_states['x'], axis_states['y'])
+                    # print("%s: %.3f" % (axis, fvalue
+                    data.speed = axis_states['y']
+                    #data.angle = axis_states['x']
+                    # print(data.angle)
                     # print("%s: %.3f" % (axis, fvalue))
-                    if axis == 'y':
-                        data.speed = fvalue
 
-                    elif axis == 'x':
-                        data.angle == fvalue
-
-        #data.speed = 0.5
-        #data.angle = 7.0
-        #rospy.loginfo((data.speed, data.angle))
+        # data.speed = 0.5
+        data.angle = 9.0
+        # rospy.loginfo((data.speed, data.angle))
 
         pub.publish(data)
         r.sleep()
